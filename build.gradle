@@ -42,10 +42,17 @@ sourceCompatibility = 1.8
 
 test {
     useJUnitPlatform()
-    systemProperty "email", project.properties['email']
-    systemProperty "password", project.properties['password']
 
-    systemProperty("junit.jupiter.execution.parallel.enabled", "true")
-    systemProperty("junit.jupiter.execution.parallel.config.strategy", "dynamic")
-    systemProperty("junit.jupiter.extensions.autodetection.enabled", "true")
+    if (secretEmail) {
+        systemProperty "email", secretEmail
+    } else {
+        systemProperty "email", email
+    }
+
+    if (secretPassword) {
+        systemProperty "password", secretPassword
+    } else {
+        systemProperty "password", password
+    }
+
 }

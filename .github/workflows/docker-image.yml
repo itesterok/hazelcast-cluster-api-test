@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: ./gradlew --continue clean test allureReport
+      run: ./gradlew --continue clean test -PsecretEmail=${{ secrets.EMAIL }} -PsecretPassword=${{ secrets.PASSWORD }} allureReport
     - name: Archive reports
       uses: actions/upload-artifact@v2
       with:
