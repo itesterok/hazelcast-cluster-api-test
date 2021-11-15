@@ -15,4 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: ./gradlew clean test allureReport
+      run: ./gradlew --continue clean test allureReport
+    - name: Archive reports
+      uses: actions/upload-artifact@v2
+      with:
+        name: reports
+        path: build/reports/
