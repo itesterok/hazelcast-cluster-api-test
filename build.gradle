@@ -43,16 +43,15 @@ sourceCompatibility = 1.8
 test {
     useJUnitPlatform()
 
-    if (secretEmail) {
+    if (project.hasProperty('secretEmail')) {
         systemProperty "email", secretEmail
     } else {
         systemProperty "email", email
     }
 
-    if (secretPassword) {
+    if (project.hasProperty('secretPassword')) {
         systemProperty "password", secretPassword
     } else {
         systemProperty "password", password
     }
-
 }
